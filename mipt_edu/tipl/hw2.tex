@@ -1,0 +1,119 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+\author{Баширов 778}
+\title{Домашнее задание 2}
+
+\begin{document}
+
+\maketitle
+\newpage
+\section{}
+
+\textbf{1}
+
+$ \varepsilon, b, bb \in L $
+
+$ L \subseteq T$
+
+чтобы это доказать достаточно доказать что в L нет слова с тремя b подряд
+
+1. в словах $\varepsilon$, b, bb не более 2 b подряд
+
+2. пусть в слове x не более 2 b подряд
+
+3. если  в слове x не более 2 b подряд то в словах ax, bax, bbax тоже
+
+$ T \subseteq L$
+
+требуется доказать что L содержит все слова в которых не более 2 b подряд
+
+алгоритм которым можно задать слово в котором не более 2 b подряд
+
+если слово заканчивается на a, то $x_0 = \varepsilon$
+
+1)далее применяем правило $x_n = ax_{n-1}$ пока не наткнемся на подслово aba или bba и применяем соответственно bax или bbax
+
+далее повторяем
+
+2) если слово заканчивается на ab или bb то $x_0 = b$ или $x_0 = bb$
+
+далее проделываем пункт 1 
+
+$L = T$ 
+
+\textbf{2}
+
+$\{a, ba, bba\}^*\{\varepsilon, b, bb\}$
+
+тк $\{\varepsilon, b, bb\}$ слова из пункта 1 правил задания языка, а $\{a, ba, bba\}^*$ любое колличество раз примененное второе правило то $\{a, ba, bba\}^*\{varepsilon, b, bb\} = L = T$
+
+\textbf{3}
+
+\begin{center}
+\begin{tikzpicture}[>=stealth',shorten >=1pt,auto,node distance=2cm]
+\node[initial, state, accepting] (q_1) {$q_1$};
+\node[state, accepting] (q_2) [right of=q_1] {$q_2$};
+\node[state, accepting] (q_3) [below of=q_2] {$q_3$};
+\node[state] (q_4) [below of=q_3] {$q_4$};
+
+\path[->] (q_1) edge [loop above] node {a} (q_1)
+edge [bend left] node {b} (q_2)
+(q_2) edge node {b} (q_3)
+edge [bend left] node {a} (q_1)
+(q_3) edge [bend left] node {b} (q_4)
+edge node {a} (q_1)
+(q_4) edge [loop above] node {a, b} (q_4);
+
+\end{tikzpicture}
+\end{center}
+
+при считывании b из состояния $q_n$ в состояние $q_(n+1)$ при $n+1 < 5$
+
+при считывании a и $n < 4$ в состояние $q_1$
+
+в остальных случаях сохраняется положение
+
+следовательно при считывании более 2 b подряд автомат переводится в непринимающее состояние и остается там
+
+в остальных случаях в принимающем
+
+\section{}
+
+а)
+
+\begin{center}
+\begin{tikzpicture}[>=stealth',shorten >=1pt,auto,node distance=2cm]
+\node[initial, state, accepting] (q_1) {$q_1$};
+\node[state] (q_2) [right of=q_1] {$q_2$};
+
+\path[->] (q_1) edge [loop above] node {1} (q_1)
+edge [bend left] node {0} (q_2)
+(q_2) edge [loop above] node {1} (q_1)
+edge [bend left] node {0} (q_1);
+
+
+\end{tikzpicture}
+\end{center}
+
+б)
+
+\begin{center}
+\begin{tikzpicture}[>=stealth',shorten >=1pt,auto,node distance=2cm]
+\node[initial, state] (q_1) {$q_1$};
+\node[state, accepting] (q_2) [right of=q_1] {$q_2$};
+
+\path[->] (q_1) edge [loop above] node {0} (q_1)
+edge [bend left] node {1} (q_2)
+(q_2) edge [loop above] node {0} (q_1)
+edge [bend left] node {1} (q_1);
+
+\end{tikzpicture}
+\end{center}
+
+
+\end{document}

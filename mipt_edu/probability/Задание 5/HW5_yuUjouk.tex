@@ -1,0 +1,115 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage[left=2cm,right=2cm,
+    top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\newcommand\tab[1][0.7cm]{\hspace*{#1}}
+\newcommand\Gammad{\text{Gamma}}
+\newcommand\myp{\mathbb P}
+\title{Домашняя работа 5}
+
+\begin{document}
+
+\maketitle
+\textbf{Задача 1} (3 балла)
+ Пусть $\{X_n\}_{n=1}^{\infty}$ — последовательность независимых случайных величин, причем
+$X_n$ принимает значения $- \sqrt{n}$, $\sqrt{n}$ с вероятностями 1/2 каждое. Выполняется для этой последовательности закон больших чисел?\\
+
+\textbf{Решение:}\\
+$$\overline{X}_n = \frac{1}{n}\sum\limits_{i=1}^{n}X_n$$
+$$E\overline{X}_n = 0$$
+Докажем что для последовательности $X_n$ не выполняется ЗБЧ. Тк из сходимости по вероятности следует сходимость по распределению, для этого достаточно доказать что последовательность $\overline{X}_n$ не сходится по распределению к $E\overline{X}_n = 0$.\\
+Найдем хар функцию:\\
+$$\varphi_{X_j}(t/n) = Ee^{iX_jt/n} = \frac{1}{2}(e^{i\sqrt{j}t/n}+e^{-i\sqrt{j}t/n}) = \cos(\sqrt{j}t/n)$$
+$$\varphi_{\overline{X}_n}(t) = \varphi_{\sum X_j}(t/n) = \prod\limits_{j=1}^n \varphi_{X_j}(t/n)$$
+$$\varphi_{\overline{X}_n}(t) = \prod\limits_{j=1}^n \cos(\sqrt{j}t/n)$$
+Пусть $t>1$. При достаточно больших $n$ выполняется:
+$$\prod\limits_{j=1}^n \cos(\sqrt{j}t/n) < \prod\limits_{j=\frac{n}{2}}^n \cos(\sqrt{j}t/n) < (\cos(t/\sqrt{2n}))^{\frac{n}{2}}\simeq (1 - \frac{t^2}{2n})^n \rightarrow e^{-\frac{t^2}{2}} < 1$$
+Следовательно последовательность $\overline{X}_n$ не сходится по распределению к нулю.\\
+чтд\\
+
+\textbf{Задача 2} (2 балла)
+Пусть $\xi_1, \xi_2, \dots$ -- последовательность независимых случайных величин,
+$$\mathbb{P}(\xi_n = \pm2^n) = 2^{-(2n+1)}, \space \mathbb{P}(\xi_n = 0) = 1 - 2^{-2n}$$\\
+
+\textbf{Решение:}\\
+$$E\xi_n = 0$$
+$$E\xi_n^2 = 1$$
+$$D\xi_n = 1$$
+$$\overline{\xi_n} = \frac{1}{n}\sum\limits_{m=1}^n \xi_m$$
+$$E\overline{\xi_n} = 0$$
+$$D\overline{\xi_n} = \frac{1}{n^2}\sum\limits_{m=1}^n D\xi_m = \frac{1}{n}$$
+Неравенство Чебышева: $\forall\varepsilon>0$
+$$P(|\overline{\xi_n}| \geq \varepsilon) \leq \frac{D\overline{\xi_n}}{\varepsilon^2} = \frac{1}{n\varepsilon^2}$$
+Следлвательно $\overline{\xi_n}$ сходится по вероятности к $E\overline{\xi_n} = 0$. Значит ЗБЧ выполняется.\\
+
+\textbf{Задача 3} (5 баллов)
+
+Игральная кость подбрасывается до тех пор, пока общая сумма выпавших очков не превысит $700$. Оценить вероятность того, что для этого потребуется более $210$ бросаний; менее $180$ бросаний; от $190$ до $210$ бросаний. (показать все выкладки и получить конкретное число)\\
+
+\textbf{Решение:}\\
+$\xi$ -- номер броска при котором общая сумма выпавших очков превысила $700$\\
+$S_n$ -- сумма очков при n-том броске\\ 
+Будем считать что $\xi = n$, это тоже самое что $S_n = 700$\\
+$$P(\xi = n) = P(S_n = 700)$$
+$S_n$ сумма случайных независимых величин($E = 3.5$, $D = 2.9$) поэтому $\eta = \frac{S_n-3.5n}{sqrt(2.9n)}$ при большом $n$ распределена как $N(0,1)$\\
+Тогда:
+$$P(S_n = 700) = P(\frac{S_n-3.5n}{\sqrt{2.9n}} = \frac{700-3.5n}{\sqrt{2.9n}}) \simeq \int\limits_{\frac{700-3.5n}{\sqrt{2.9n}}}^{\frac{701-3.5n}{\sqrt{2.9n}}} f_{N(0,1)}(x)dx \simeq (f_{N(0,1)}(\frac{700-3.5n}{\sqrt{2.9n}}))/ \sqrt{2.9n} = u(n)$$
+Тогда:
+$$P(\xi>210) = \int\limits_{210}^{\infty} u(n) dn = 0.02$$
+$$P(\xi<180) = 1 -P(\xi>180) = 1 - \int\limits_{180}^{\infty} u(n) dn = 0.72$$
+$$P(190<\xi<210) = \int\limits_{190}^{210} u(n) dn = 0.24$$
+\textbf{Задача 4} (5 баллов)
+
+Известно, что вероятность рождения мальчика приблизительно равна $0,515$. Какова вероятность того, что среди $10$ тысяч новорождённых мальчиков будет меньше, чем девочек? (показать все выкладки и получить конкретное число)\\
+
+\textbf{Решение:}\\
+Введем случайную величину $S_n$ -- колличество мальчиков при $n$ новорожденных. Заметим что $S_n$ является суммой независимых случаных величин $Be(p = 0,515)$. Тогда используем интегральную теорему Муавра-Лапласа:\\
+$P(-\infty \leq S_n \leq 4999)  = P(-\infty \leq \frac{S_n - np}{\sqrt{np(1-p)}} \leq b) \simeq \Phi(b) - \Phi(-\infty)$, где $b = \frac{4999 - np}{\sqrt{np(1-p)}} = -3,02$\\
+Получаем ответ: $P(-\infty \leq S_n \leq 4999) = 0,00123$\\
+
+\textbf{Задача 5} (5 баллов)
+
+Докажите
+
+\begin{center}
+    $\lim\limits_{n \to +\infty} \sum\limits_{\lfloor n/2 + \sqrt{n} \rfloor}^{n} C_n^k 2^{-n} = 1 - \Phi(2)$
+\end{center}
+
+\textbf{Решение:}\\
+$$\xi_n \sim Bi(p=1/2, n)$$
+Перебором по всем $n \geq k \geq \lfloor n/2 + \sqrt{n} \rfloor$ можно получить:\\
+$$P(\xi_n \geq \lfloor n/2 + \sqrt{n} \rfloor) = \sum\limits_{\lfloor n/2 + \sqrt{n} \rfloor}^{n} C_n^k 2^{-n}$$
+Теперь используем интегральную теорему Муавра-Лапласа:
+$$P(\xi_n \geq \lfloor n/2 + \sqrt{n} \rfloor) = P(\frac{\xi_n - n/2}{\sqrt{n/4}} > 2) = P(\frac{\xi_n - np}{\sqrt{np(1-p)}} > 2)= \Phi(+\infty) - \Phi(2) = 1 - \Phi(2)$$\\
+
+\textbf{Задача 6} (5 баллов)
+Пусть $\xi_1, \xi_2, \dots$ -- последовательность независимых одинаково распределённых случайных величин с конечными дисперсиями. Для любого фиксированного вещественного $x$ найти предел.
+\begin{center}
+$\underset{n \to \infty}{\lim}\myp{(\xi_1 + \xi_2 + \dots + \xi_n < x)}$
+\end{center}
+
+\textbf{Решение:}\\
+$$S_n = \xi_1 + \xi_2 + \dots + \xi_n$$
+Используя ЦПТ получаем:\\
+$$\frac{S_n - nm}{\sqrt{nD\xi_1}}\sim N(0,1)$$
+$$f_{N(0,1)}(x) = \frac{1}{\sqrt{2\pi}}e^{-x^2/2}$$
+$$P(S_n < x) = P(\frac{S_n - nm}{\sqrt{nD\xi_1}} < \frac{x - nm}{\sqrt{nD\xi_1}}) = \int\limits_{-\infty}^{y_0(n)} \frac{1}{\sqrt{2\pi}}e^{-y^2/2} dy = \Phi(y_0(n))$$
+где $y_0(n) = \frac{x - nm}{\sqrt{nD\xi_1}}$\\
+Найдем пределы $y_0(n)$:\\
+$\underset{n \to \infty}{\lim} y_0(n) = -\infty$, при $m > 0$\\
+$\underset{n \to \infty}{\lim} y_0(n) = +\infty$, при $m < 0$\\
+$\underset{n \to \infty}{\lim} y_0(n) = 0$, при $m = 0$\\
+Тогда:\\
+$\underset{n \to \infty}{\lim} P(S_n < x) = 0$, при $m > 0$\\
+$\underset{n \to \infty}{\lim} P(S_n < x) = 1$, при $m < 0$\\
+$\underset{n \to \infty}{\lim} P(S_n < x) = \Phi(0) = 1/2$, при $m = 0$\\
+
+\end{document}

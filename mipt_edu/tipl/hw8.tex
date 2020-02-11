@@ -1,0 +1,87 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+\usepackage{tikz}
+\author{Баширов 778}
+\title{Домашнее задание 8}
+
+\begin{document}
+\maketitle
+\newpage
+
+\section{}
+Автомат $\cal{A}$:\\
+\begin{center}
+\begin{tikzpicture}[scale=0.2]
+\tikzstyle{every node}+=[inner sep=0pt]
+\draw [black] (14.4,-23) circle (3);
+\draw (14.4,-23) node {$q_0$};
+\draw [black] (14.4,-23) circle (2.4);
+\draw [black] (36.8,-23) circle (3);
+\draw (36.8,-23) node {$q_1$};
+\draw [black] (70.8,-23) circle (3);
+\draw (70.8,-23) node {$q_2$};
+\draw [black] (70.8,-23) circle (2.4);
+\draw [black] (7.7,-23) -- (11.4,-23);
+\fill [black] (11.4,-23) -- (10.6,-22.5) -- (10.6,-23.5);
+\draw [black] (16.579,-20.945) arc (127.52002:52.47998:14.812);
+\fill [black] (34.62,-20.95) -- (34.29,-20.06) -- (33.68,-20.85);
+\draw (25.6,-17.38) node [above] {$a,Z_0/aZ_0Z_1$};
+\draw [black] (34.455,-24.864) arc (-56.839:-123.161:16.188);
+\fill [black] (34.45,-24.86) -- (33.51,-24.88) -- (34.06,-25.72);
+\draw (25.6,-28) node [below] {$b,Z_0/bZ_0Z_1$};
+\draw [black] (68.027,-24.142) arc (-69.7141:-110.2859:41.034);
+\fill [black] (68.03,-24.14) -- (67.1,-23.95) -- (67.45,-24.89);
+\draw (53.8,-27.19) node [below] {$\varepsilon,Z_0/\varepsilon$};
+\draw [black] (35.477,-20.32) arc (234:-54:2.25);
+\draw (36.8,-15.75) node [above] {$a,a/aa\mbox{ }a,b/\varepsilon$};
+\fill [black] (38.12,-20.32) -- (39,-19.97) -- (38.19,-19.38);
+\draw [black] (38.123,-25.68) arc (54:-234:2.25);
+\draw (36.8,-30.25) node [below] {$b,b/bb\mbox{ }b,a/\varepsilon$};
+\fill [black] (35.48,-25.68) -- (34.6,-26.03) -- (35.41,-26.62);
+\draw [black] (38.718,-20.696) arc (136.11696:43.88304:20.926);
+\fill [black] (38.72,-20.7) -- (39.63,-20.47) -- (38.91,-19.77);
+\draw (53.8,-13.78) node [above] {$a,Z_1/aZ_0Z_1\mbox{ }b,Z_1/bZ_0Z_1$};
+\end{tikzpicture}
+\end{center}
+
+
+Доказательство корректности автомата по индукции:\\
+База:\\
+n -- длина слова\\
+Для n=0 выполняется тк $q_0$ принимающее(автомат принимает пустое слово)\\
+\\
+Докажем для k+1 при условии что для k разница между колличеством букв a и b не больше одного:
+Слова длиной больше нуля в которых не совпадает колличество букв находятся в состоянии $q_1$. Если при прочтении новой буквы колличество букв в слове выравнивается то в стеке будет лежать $Z_0Z_1$, можно перейти в состояние 2 (принимающее) по пустому слову.\\
+ч.т.д.
+
+\section{}
+1)\\
+\begin{center}
+\begin{tikzpicture}[scale=0.2]
+\tikzstyle{every node}+=[inner sep=0pt]
+\draw [black] (38,-30) circle (3);
+\draw (38,-30) node {$q_0$};
+\draw [black] (31.4,-30) -- (35,-30);
+\fill [black] (35,-30) -- (34.2,-29.5) -- (34.2,-30.5);
+\draw [black] (36.1,-27.693) arc (247.20992:-40.79008:2.25);
+\draw (30.07,-22.21) node [above] {$(,{Z_0,\mbox{ }(,\mbox{ }[}/(\mbox{ }\mbox{ }\mbox{ }),(/\varepsilon$};
+\fill [black] (38.68,-27.09) -- (39.45,-26.55) -- (38.52,-26.16);
+\draw [black] (38.528,-32.941) arc (37.91835:-250.08165:2.25);
+\draw (28.45,-37.5) node [below] {$[,{Z_0,\mbox{ }(,\mbox{ }[}/[\mbox{ }\mbox{ }\mbox{ }],[/\varepsilon$};
+\fill [black] (35.99,-32.21) -- (35.05,-32.31) -- (35.66,-33.09);
+\draw [black] (40.68,-28.677) arc (144:-144:2.25);
+\draw (45.25,-30) node [right] {$\varepsilon,Z_0/\varepsilon$};
+\fill [black] (40.68,-31.32) -- (41.03,-32.2) -- (41.62,-31.39);
+\end{tikzpicture}
+\end{center}
+
+\section{}
+
+\section{}
+
+\section{}
+
+\end{document}

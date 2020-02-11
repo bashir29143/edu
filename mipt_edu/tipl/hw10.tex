@@ -1,0 +1,49 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+\usepackage{tikz}
+\author{Баширов 778}
+\title{Домашнее задание 10}
+
+\begin{document}
+\maketitle
+\newpage
+
+\section{}
+\section{}
+$\lbrace a^nb^mb^nc^m | n, m \geq 0\rbrace$ \\
+Заметим что это тоже самое что\\
+$\lbrace a^nb^nb^mc^m | n, m \geq 0\rbrace$ \\
+Построим грамматику для данного языка:\\
+$S\rightarrow AB $\\
+$A\rightarrow aAb$\\
+$B\rightarrow bBc$\\
+\section{}
+1)\\
+$A\setminus R = A\cap (\Sigma^*\setminus R) = A\cap R$\\
+Языку A соответствует мп-автомат\\
+Языку R соответствует ДКА\\
+Тогда языку $A\cap R$ соответствует произведение мп-автомата на ДКА,те новый мп-автомат. Получается что $A\setminus R\in CFL$\\
+2)\\
+Возьмем за A язык из первой задачи $\Sigma^*\setminus {a^nb^nc^n|n\geq 0}$\\
+Пусть $R = \Sigma^*$\\
+Тогда $R\setminus A = {a^nb^nc^n|n\geq 0}\notin CFL$\\
+Противоречие
+3)\\
+$A^R \in CFL$
+Пусть языку A соответствует грамматика G. Тогда если все правые части правил развернуть то новая грамматика порождает язык $A^R$. 
+\section{}
+Докажем, что язык $L={\omega t\omega^R} \notin CFL$\\
+Отрицание леммы о накачке:\\
+$\forall p$\\
+$\exists \theta \in L : \forall$ разбиения $\theta = xuyvz:$ \\$ |uv|\geq 1 $\\$|uyv|\leq p $\\$ \exists i>0 : xu^iyv^iz \notin L$\\
+Возьмем слово $a^pb^pa^p$
+Рассмотрим два случая: когда u и v лежат во втором или третьем сегменте целиком, одно из двух подслов лежит на пересечении сегментов.
+1)Очевидно
+2)Очевидно
+чтд
+\section{}
+
+\end{document}

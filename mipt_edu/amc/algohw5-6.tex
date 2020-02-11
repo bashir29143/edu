@@ -1,0 +1,37 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+\usepackage{tikz}
+\author{Баширов 778}
+\title{Домашнее задание 5-6}
+
+\begin{document}
+\maketitle
+\newpage
+\noindent \large\textbf{1}\normalsize\\
+По определению PSPACE-hard:\\
+$\forall L \in PSPACE$\\ $L\leq_{p} A \leq_{p} B \Rightarrow L \leq_{p} B$\\
+\large\textbf{2}\normalsize\\
+По определению PSPACE-hard:\\
+$\forall L \in PSPACE$\\ $L\leq_{p} A \in P \Rightarrow L \in P$\\$PSPACE \subseteq P$ \\Из семинара: $P \subseteq PSPACE$ \\Получаем: $P = PSPACE$\\
+\large\textbf{3}\normalsize\\
+По определению PSPACE-hard:\\
+$\forall L \in PSPACE$\\ $L\leq_{p} A \in NP \Rightarrow L \in NP$\\$PSPACE \subseteq NP$ \\Из семинара: $NP \subseteq PSPACE$ \\Получаем: $NP = PSPACE$\\
+\large\textbf{4}\normalsize\\
+$L \in BPP$\\
+$\forall x \in L$ ВМТ выдает $1$ с вероятностью $p_1 > 2/3$\\ $\forall y \notin L$ ВМТ выдает $1$ с вероятностью $p_2 > 2/3$\\ 
+Рассмотрим дополнение языка $L$ и поменям выходы $0$ и $1$ на исходной ВМТ. Тогда:\\на $y$ ВМТ выдает $1$ с вероятностью $p_2 > 2/3$\\  на $x$ ВМТ выдает $1$ с вероятностью $p_1 > 2/3$\\Получаем что $\overline{L} \in BPP$\\
+\large\textbf{5}\normalsize\\
+$L \in RP$\\
+$\forall x \in L \exists r : V(x,r)$ выдает $1$\\ Примем $r$ за сертификат\\ Так как в худшем случае V(x,r) работает за полином то $L \in NP$\\
+\large\textbf{6}\normalsize\\
+\large\textbf{7}\normalsize\\
+Для начала найдем среднее время: \\
+Назовем шагом колличество карт под картой номер $(n-1)$. Перемешивание останавливается на шаге $(n-1)$. Введем обозначаение 
+$E_{i}t$ -- матожидание времени перемешивания после шага $i$. Очевидно, $E_{n-1}t = 1$.\\ Составим рекуррентное уравнение:\\
+$E_{i} = (1-\frac{i+1}{n-1})(E_{i} + 1) + \frac{i+1}{n-1}(E_{i+1} + 1)$, где $\frac{i+1}{n-1}$ -- вероятность что после перестановки верхняя карта окажется под картой номер $n-1$, те шаг увеличится. Искомая величина $E_{1} = 1 + \sum_{i=1}^{n-2} \frac{n-1}{i+1}$\\ 
+Худшее время равно бесконечности так как можно менять две верхние карты местами сколь угодно большое время.
+
+\end{document}

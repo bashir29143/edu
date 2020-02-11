@@ -1,0 +1,216 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+\usepackage{tikz}
+\author{Баширов 778}
+\title{Домашнее задание 9}
+
+\begin{document}
+\maketitle
+\newpage
+
+\section{}
+Построим грамматику для n:\\
+$S\rightarrow A_n A_{n-1} ...A_2 A_1 A_1 A_2 ... A_{n-1} A^n $\\
+$A_{1}\rightarrow ab $\\
+$A_{2}\rightarrow aA_{1}$\\
+...\\
+$A_{n}\rightarrow aA_{n-1}$\\
+Путем последовательной подстановки нетерминалов получаем слово из условия задачи. Длина описания правила равна $4n$.\\
+Теперь построим конкретную грамматику для 5:\\ 
+$S\rightarrow A_5 A_4 A_3 A_2 A_1 A_1 A_2 A_3 A_4 A_5 $\\
+$A_1\rightarrow ab $\\
+$A_2\rightarrow aA_1$\\
+$A_3\rightarrow aA_2$\\
+$A_4\rightarrow aA_3$\\
+$A_5\rightarrow aA_4$\\
+
+\section{}
+
+\section{}
+а)\\
+$S\rightarrow A_1 A_2 A_3 A_4$\\
+$A_1\rightarrow a$\\
+$A_2\rightarrow A_1 a$\\
+$A_3\rightarrow A_2 a$\\
+$A_4\rightarrow A_3$\\
+\\
+\begin{center}
+\begin{tikzpicture}[scale=0.2]
+\tikzstyle{every node}+=[inner sep=0pt]
+\draw [black] (20.8,-26.2) circle (3);
+\draw (20.8,-26.2) node {$q_0$};
+\draw [black] (31.2,-26.2) circle (3);
+\draw (31.2,-26.2) node {$A_1$};
+\draw [black] (41.2,-26.2) circle (3);
+\draw (41.2,-26.2) node {$A_2$};
+\draw [black] (51.3,-26.2) circle (3);
+\draw (51.3,-26.2) node {$A_3$};
+\draw [black] (41.2,-15.5) circle (3);
+\draw (41.2,-15.5) node {$A_4$};
+\draw [black] (13.5,-26.2) -- (17.8,-26.2);
+\fill [black] (17.8,-26.2) -- (17,-25.7) -- (17,-26.7);
+\draw [black] (23.8,-26.2) -- (28.2,-26.2);
+\fill [black] (28.2,-26.2) -- (27.4,-25.7) -- (27.4,-26.7);
+\draw (26,-26.7) node [below] {$a$};
+\draw [black] (34.2,-26.2) -- (38.2,-26.2);
+\fill [black] (38.2,-26.2) -- (37.4,-25.7) -- (37.4,-26.7);
+\draw (36.2,-26.7) node [below] {$a$};
+\draw [black] (44.2,-26.2) -- (48.3,-26.2);
+\fill [black] (48.3,-26.2) -- (47.5,-25.7) -- (47.5,-26.7);
+\draw (46.25,-26.7) node [below] {$a$};
+\draw [black] (41.2,-23.2) -- (41.2,-18.5);
+\fill [black] (41.2,-18.5) -- (40.7,-19.3) -- (41.7,-19.3);
+\draw (41.7,-20.85) node [right] {$E$};
+\end{tikzpicture}
+\end{center}
+б)\\
+$A_1 \rightarrow t$\\
+$A_2 \rightarrow o$\\
+$A_3 \rightarrow b$\\
+$A_4 \rightarrow e$\\
+$A_5 \rightarrow A_2 r$\\
+$A_6 \rightarrow n$\\
+$A_7 \rightarrow A_2 t$\\
+$A_8 \rightarrow A_1 o$\\
+$A_9 \rightarrow A_3 e$\\
+$A_{10} \rightarrow A_5 t$\\
+$A_{11} \rightarrow A_2 b$\\
+$A_{12} \rightarrow A_4 o$\\
+$A_{13} \rightarrow r$\\
+$A_{14} \rightarrow A_6 o$\\
+$A_{15} \rightarrow A_1$\\
+
+\begin{center}
+\begin{tikzpicture}[scale=0.2]
+\tikzstyle{every node}+=[inner sep=0pt]
+\draw [black] (22.4,-31.9) circle (3);
+\draw (22.4,-31.9) node {$q_0$};
+\draw [black] (3.3,-19) circle (3);
+\draw (3.3,-19) node {$A_6$};
+\draw [black] (25.2,-15.1) circle (3);
+\draw (25.2,-15.1) node {$A_1$};
+\draw [black] (46.2,-28.3) circle (3);
+\draw (46.2,-28.3) node {$A_2$};
+\draw [black] (51,-46.6) circle (3);
+\draw (51,-46.6) node {$A_3$};
+\draw [black] (18,-45.2) circle (3);
+\draw (18,-45.2) node {$A_4$};
+\draw [black] (4.5,-42.8) circle (3);
+\draw (4.5,-42.8) node {$A_{13}$};
+\draw [black] (57.9,-17.6) circle (3);
+\draw (57.9,-17.6) node {$A_5$};
+\draw [black] (71.2,-35.8) circle (3);
+\draw (71.2,-35.8) node {$A_7$};
+\draw [black] (38.2,-19.9) circle (3);
+\draw (38.2,-19.9) node {$A_8$};
+\draw [black] (71.8,-51.8) circle (3);
+\draw (71.8,-51.8) node {$A_9$};
+\draw [black] (68.6,-6.1) circle (3);
+\draw (68.6,-6.1) node {$A_{10}$};
+\draw [black] (42.3,-6.1) circle (3);
+\draw (42.3,-6.1) node {$A_{11}$};
+\draw [black] (29.6,-55.4) circle (3);
+\draw (29.6,-55.4) node {$A_{12}$};
+\draw [black] (3.3,-6.9) circle (3);
+\draw (3.3,-6.9) node {$A_{14}$};
+\draw [black] (13.9,-5.2) circle (3);
+\draw (13.9,-5.2) node {$A_{15}$};
+\draw [black] (15.1,-31.9) -- (19.4,-31.9);
+\fill [black] (19.4,-31.9) -- (18.6,-31.4) -- (18.6,-32.4);
+\draw [black] (19.91,-30.22) -- (5.79,-20.68);
+\fill [black] (5.79,-20.68) -- (6.17,-21.54) -- (6.73,-20.71);
+\draw (13.95,-24.95) node [above] {$n$};
+\draw [black] (22.89,-28.94) -- (24.71,-18.06);
+\fill [black] (24.71,-18.06) -- (24.08,-18.77) -- (25.07,-18.93);
+\draw (24.51,-23.73) node [right] {$t$};
+\draw [black] (25.37,-31.45) -- (43.23,-28.75);
+\fill [black] (43.23,-28.75) -- (42.37,-28.37) -- (42.52,-29.36);
+\draw (34.72,-30.7) node [below] {$o$};
+\draw [black] (25.07,-33.27) -- (48.33,-45.23);
+\fill [black] (48.33,-45.23) -- (47.85,-44.42) -- (47.39,-45.31);
+\draw (35.56,-39.75) node [below] {$b$};
+\draw [black] (21.46,-34.75) -- (18.94,-42.35);
+\fill [black] (18.94,-42.35) -- (19.67,-41.75) -- (18.72,-41.44);
+\draw (19.43,-37.85) node [left] {$e$};
+\draw [black] (19.84,-33.46) -- (7.06,-41.24);
+\fill [black] (7.06,-41.24) -- (8.01,-41.25) -- (7.49,-40.4);
+\draw (12.45,-36.85) node [above] {$r$};
+\draw [black] (48.41,-26.28) -- (55.69,-19.62);
+\fill [black] (55.69,-19.62) -- (54.76,-19.8) -- (55.43,-20.53);
+\draw (53.06,-23.44) node [below] {$r$};
+\draw [black] (49.07,-29.16) -- (68.33,-34.94);
+\fill [black] (68.33,-34.94) -- (67.7,-34.23) -- (67.42,-35.19);
+\draw (57.95,-32.59) node [below] {$t$};
+\draw [black] (28.01,-16.14) -- (35.39,-18.86);
+\fill [black] (35.39,-18.86) -- (34.81,-18.11) -- (34.46,-19.05);
+\draw (30.68,-18.03) node [below] {$o$};
+\draw [black] (53.91,-47.33) -- (68.89,-51.07);
+\fill [black] (68.89,-51.07) -- (68.23,-50.39) -- (67.99,-51.36);
+\draw (60.61,-49.78) node [below] {$e$};
+\draw [black] (59.94,-15.4) -- (66.56,-8.3);
+\fill [black] (66.56,-8.3) -- (65.65,-8.54) -- (66.38,-9.22);
+\draw (63.78,-13.31) node [right] {$t$};
+\draw [black] (45.68,-25.35) -- (42.82,-9.05);
+\fill [black] (42.82,-9.05) -- (42.47,-9.93) -- (43.45,-9.76);
+\draw (44.97,-16.95) node [right] {$b$};
+\draw [black] (20.25,-47.18) -- (27.35,-53.42);
+\fill [black] (27.35,-53.42) -- (27.08,-52.52) -- (26.42,-53.27);
+\draw (22.69,-50.79) node [below] {$o$};
+\draw [black] (3.3,-16) -- (3.3,-9.9);
+\fill [black] (3.3,-9.9) -- (2.8,-10.7) -- (3.8,-10.7);
+\draw (3.8,-12.95) node [right] {$o$};
+\draw [black] (22.94,-13.12) -- (16.16,-7.18);
+\fill [black] (16.16,-7.18) -- (16.43,-8.08) -- (17.09,-7.33);
+\draw (20.81,-9.66) node [above] {$\varepsilon$};
+\end{tikzpicture}
+\end{center}
+
+
+\section{}
+$S\rightarrow A_2 A_1 A_2$\\
+$A_1\rightarrow tobeor $\\
+$A_2\rightarrow A_1 not $\\
+\section{}
+
+\section{}
+
+\section{}
+
+\section{}
+$S\rightarrow A\vert B\vert C\vert E\vert AG$\\
+$A\rightarrow C\vert aABC\vert \varepsilon$\\
+$B\rightarrow bABa\vert aCbDaGb\vert \varepsilon$\\
+$C\rightarrow BaAbC\vert aGD\vert \varepsilon$\\
+$F\rightarrow aBaaCbA\vert aGE$\\
+$E\rightarrow A$\\
+Сначала удалим все бесплодные по алгоритму:\\
+$V_{0} = T$\\
+$V_{1} = V_{0}+A+B+C$\\
+$V_{2} = V_{1}+F+E+S$\\
+$V_{3} = V_{2}$\\
+Получаем новую грамматику:\\
+$N=V_{3}\setminus T={A, B, C, F, E, S}$\\
+$S\rightarrow A\vert B\vert C\vert E$\\
+$A\rightarrow C\vert aABC\vert \varepsilon$\\
+$B\rightarrow bABa\vert \varepsilon$\\
+$C\rightarrow BaAbC\vert \varepsilon$\\
+$F\rightarrow aBaaCbA$\\
+$E\rightarrow A$\\
+Теперь удалим недостижимые:\\
+$V_{0} = S$\\
+$V_{1} = V_{0}+A+B+C+E$\\
+$V_{2} = V_{1}$\\
+$N = V_{2}$\\
+Приведенная грамматика:\\
+$S\rightarrow A\vert B\vert C\vert E$\\
+$A\rightarrow C\vert aABC\vert \varepsilon$\\
+$B\rightarrow bABa\vert \varepsilon$\\
+$C\rightarrow BaAbC\vert \varepsilon$\\
+$E\rightarrow A$\\
+
+\section{}
+
+\end{document}

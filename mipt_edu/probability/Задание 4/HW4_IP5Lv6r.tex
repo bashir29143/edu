@@ -1,0 +1,178 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage[left=2cm,right=2cm,
+    top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\newcommand\tab[1][0.7cm]{\hspace*{#1}}
+\newcommand\Gammad{\text{Gamma}}
+\title{Домашняя работа 4}
+
+\begin{document}
+
+\maketitle
+\textbf{Задача 1} (5 баллов)
+
+Гамма-распределение $\Gammad(\alpha, \lambda)$ - это распредление с плотностью вероятности $f(x) = \frac{ \lambda^\alpha x^{\alpha - 1} }{ \Gamma(\alpha) } e^{-\lambda x}$, $x \geq 0$ ($\Gamma(\alpha)$ - гамма-функция Эйлера)
+Посчитайте мат.ожидание и дисперсию для гамма-распределения. Как распределена сумма $n$ независимых случайных величин, каждая из которых распределена как $\Gamma(\alpha, \lambda)$? Если $X \sim \Gamma(\alpha, \lambda)$, то как распределена с.в. $aX$, где $a > 0$ - произвольная константа? (приведите все! выкладки)\\
+
+\textbf{Решение:}\\
+$G$ - с.в. с гамма-распределением $\Gammad(\alpha, \lambda)$\\
+Найдем характеристическую функцию гамма-распределения:\\
+$\varphi_G(t) = \int\limits_0^{+\infty} f(x)e^{itx}dx = \int\limits_0^{+\infty} \frac{ \lambda^\alpha x^{\alpha - 1} }{ \Gamma(\alpha) } e^{(it -\lambda )x} dx = \int\limits_0^{+\infty} \frac{ \lambda^\alpha ((\lambda - it)x)^{\alpha - 1} }{ (\lambda - it)^{\alpha}\Gamma(\alpha) } e^{-(\lambda - it)x} d(\lambda - it)x = \int\limits_0^{+\infty} \frac{ \lambda^\alpha (u)^{\alpha - 1} }{ (\lambda - it)^{\alpha}\Gamma(\alpha) } e^{-ux} du =$\\
+$= \frac{ \lambda^\alpha \Gamma(\alpha) }{ (\lambda - it)^{\alpha}\Gamma(\alpha) } = \frac{ \lambda^\alpha}{(\lambda - it)^{\alpha}}$\\
+Теперь с помощью характеристической функции найдем матожидание и дисперсию:\\
+$iEG = \varphi_{G}'(0) = i\frac{\alpha}{\lambda}$\\
+$EG = \frac{\alpha}{\lambda}$\\
+$-EG^2 = \varphi_{G}''(0) = -\frac{\alpha(\alpha+1)}{\lambda ^2}$\\
+$DG = EG^2 - (EG)^2 = \frac{\alpha}{\lambda^2}$\\
+Так как хар. функция суммы н.с.в. равна произведению хар. функций:\\
+$\varphi_{\Sigma G}(t) = \varphi_G(t)^n = \frac{ \lambda^{n\alpha}}{(\lambda - it)^{{n\alpha}}}$\\
+Тогда $\Sigma G$ распределена как $\Gammad(n\alpha, \lambda)$\\
+
+Пусть $f_a$,$F_a$ -- плотность и функция распределения $aX$ соответственно.\\
+$$F_a(x) = F(ax)$$
+$$f_a(x) = F_a'(x) = F'(ax) = f(ax)*a = \frac{ (a\lambda)^\alpha x^{\alpha - 1} }{ \Gamma(\alpha) } e^{-a\lambda x}  = \Gammad(\alpha, a\lambda)$$\\
+
+\textbf{Задача 2} (4 балла)
+
+Пусть $\xi$ с.в. с действительной характеристической функцией $f(t)$ и дисперсией $\sigma^2$. Доказать, что:
+$$f(t) \geq 1 - \frac{t^2\sigma^2}{2}$$\\
+
+\textbf{Решение:}\\
+$$Ee^{it\xi} \geq 1 - \frac{t^2\sigma^2}{2}$$\\
+Так как функция действительнозначная то можно отбросить мнимую часть. Также заметим, что матожидание $\xi$ равно нулю:\\
+$$E\xi = -i*f'(0) = 0$$
+Так как комплексная часть $f'(0)$ равна нулю.\\
+
+Тогда:\\
+$$Ee^{it\xi} = Ecos(t\xi) \geq 1 - \frac{t^2 E\xi ^2}{2} = 1 - \frac{E\xi ^2t^2}{2}$$\\
+Достаточно доказать что
+$$Ecos(t\xi) -(1 - \frac{E\xi ^2t^2}{2}) \geq 0$$\\
+$$E(cos(t\xi) -(1 - \frac{\xi ^2t^2}{2})) \geq 0$$\\
+Для любого $u$ верно:
+$$cosu -(1 - \frac{u^2}{2}) \geq 0$$\\
+Следовательно:
+$$cos(t\xi) -(1 - \frac{\xi ^2t^2}{2}) \geq 0$$\\
+$$E(cos(t\xi) -(1 - \frac{\xi ^2t^2}{2})) \geq 0$$\\
+чтд\\
+
+\textbf{Задача 3} (2 балла)
+\begin{center}
+$x = \begin{pmatrix}
+  x_1 \\ X_2 \\ X_3 
+\end{pmatrix} \sim$
+$\mathrm{N} \begin{pmatrix}
+\begin{pmatrix}
+2 \\ 3 \\ 1
+\end{pmatrix}, &
+\begin{pmatrix}
+5 & 2 & 7 \\ 2 & 5 & 7 \\ 7 & 7 & 14
+\end{pmatrix}    
+\end{pmatrix}$    
+\end{center}
+
+Найдите распределение случайного вектора $(Y_1, Y_2)^T$, где $Y_1 = X_1 + X_2 - X_3$, $Y_2 = X_1 + X_2 + X_3$\\
+
+\textbf{Решение:}\\
+$(Y_1, Y_2)^T = y = Ax$, где 
+$A = \begin{pmatrix}
+1 & 1 & -1 \\ 1 & 1 & 1
+\end{pmatrix}$\\
+Также введем обозначения:
+$R = \begin{pmatrix}
+5 & 2 & 7 \\ 2 & 5 & 7 \\ 7 & 7 & 14
+\end{pmatrix}$, 
+$m = \begin{pmatrix}
+2 \\ 3 \\ 1
+\end{pmatrix}$\\
+Тогда $y \sim N(Am, ARA^T)$\\
+$Am = \begin{pmatrix}
+4\\6
+\end{pmatrix}$\\
+$ARA^T = \begin{pmatrix}
+0 & 0 \\ 0 & 56
+\end{pmatrix}$\\
+\begin{center}
+$y = \sim$
+$\mathrm{N} \begin{pmatrix}
+\begin{pmatrix}
+4 \\ 6
+\end{pmatrix}, &
+\begin{pmatrix}
+0 & 0 \\ 0 & 56
+\end{pmatrix}    
+\end{pmatrix}$    
+\end{center}
+
+\textbf{Задача 4} (5 баллов)
+
+Докажите, что сумма $n$ независимых случайных величин, равномерно 
+распределенных на отрезке $[-1, 1]$, имеет плотность $f$, задаваемую формулой
+
+\begin{center}
+    
+
+$f(x) = \frac{1}{\pi}  \int\limits_{0}^{+\infty} \left(\frac{\sin t}{t} \right)^n \cos(tx) dt$
+
+\end{center}
+Верна ли эта формула при $n = 1$?\\
+
+\textbf{Решение:}\\
+Найдем характеристическую функцию св равномерно 
+распределенной на отрезке $[-1, 1]$\\
+$$\varphi(t) = \frac{1}{2}\int\limits_{-1}^{1} e^{-itx}dx = \frac{e^{it} - e^{-it}}{2it} = \frac{sint}{t}$$\\
+Тогда хар функция суммы $n$ независимых случайных величин, равномерно 
+распределенных на отрезке $[-1, 1]$,\\
+$$\varphi_\Sigma(t) = \begin{pmatrix}
+\frac{sint}{t}
+\end{pmatrix}^n$$\\
+Найдем функцию плотности распределения с помощью обратного преобразования:\\
+$$f(x) = \frac{1}{\pi}  \int\limits_{0}^{+\infty} \left(\frac{\sin t}{t} \right)^n e^{-itx} dt$$\\
+Благодаря тому что функция плотности действительнозначная можно откинуть комплексную часть. Получим:\\
+$$f(x) = \frac{1}{\pi}  \int\limits_{0}^{+\infty} \left(\frac{\sin t}{t} \right)^n \cos(tx) dt$$\\
+
+Для того чтобы проверить верно ли это при $n=1$ проинтегруем $f(x)$ в Вольфраме от $-\infty$ до $+\infty$\\
+Получаем функцию которая на отрезке $[-1, 1]$ равна $\frac{1}{2}$, а вне отрезка нулю, что соответствует равномерному распределнию.\\
+
+\textbf{Задача 5} (4 балла)
+
+Пусть $f$ - непрерывная, монотонно-возрастающая, неотрицательная, ограниченная функция, такая, что $f(0) = 0$.
+
+Докажите, что для сходимости $\xi_n$ к 0 по вероятности необходимо и достаточно, чтобы сходилась к 0 последовательность $\mathbb E f(\vert \xi_n \vert)$\\
+
+\textbf{Решение:}\\
+Сначала докажем что из сходимости к нулю последовательности  $\mathbb E f(\vert \xi_n \vert)$ следует сходимость $\xi_n$ к 0 по вероятности.\\
+
+Используем обобщенное неравенство Маркова для св $\vert\xi_n\vert$:\\
+$$P(\vert\xi_n\vert\geq t) \leq \frac{Ef(\vert\xi_n\vert)}{f(t)},$$
+где $t>0$, $f$ удовлетворяет условию монотонного возрастания.\\
+$f(t) > 0$, так как $f()$ сторого монотонна и равна нулю в нуле.\\
+Тогда при фиксированном $t>0$ последовательность $P(\vert\xi_n\vert\geq t)$ стремится к нулю, так как она ограниченна сходящейся к нулю последовательностью и положительна.\\
+Значит, $\xi_n$  сходится к нулю по вероятности.\\
+В другую сторону верно, так как из сходимости по вероятности следует сходимость по распределению.\\
+Из сходимости по распределению:\\
+$Ef(\vert\xi_n\vert) \rightarrow Ef(\vert\xi\vert)$, где $f(\vert t\vert)$ удовлетворяет условиям непрерывности и ограниченности.\\
+чтд\\
+
+\textbf{Задача 6} (5 баллов)
+Пусть $\xi_1, \xi_2, \dots$ -- последовательность случайных величин с конечными дисперсиями. Положим $a_n = \mathbb E \xi_n$, $\sigma_n^2 = \mathbb D\xi_n$. Доказать, что если $a_n \rightarrow \infty$ и $\sigma_n^2 = o(a_n^2)$ при $n \rightarrow \infty$, то 
+
+$$\frac{\xi_n}{a_n} \overset{P}{\rightarrow} 1, n \rightarrow \infty$$\\
+
+\textbf{Решение:}\\
+Введем случайную величину $\eta = \frac{\xi_n}{a_n}$.\\
+$$E\eta = 1$$
+$$D\eta = \frac{D\xi}{a_n^2} = \frac{\sigma^2_n}{a_n^2}$$
+Неравенство Чебышева:\\
+$$P(\vert\eta - E\eta\vert\geq t) \leq \frac{D\eta}{t^2}, \forall t>0$$
+$$P(\vert\frac{\xi_n}{a_n} - 1\vert\geq t) \leq \frac{(\frac{\sigma^2_n}{a_n^2})}{t^2}$$
+Последовательность $P(\vert\frac{\xi_n}{a_n} - 1\vert\geq t)$ сходится к нулю так как она ограниченна сходящейся к нулю $\frac{\sigma^2_n}{a_n^2}$.\\
+Следовательно $\frac{\xi_n}{a_n}$ сходится по вероятности к 1.
+\end{document}

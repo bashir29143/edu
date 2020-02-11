@@ -1,0 +1,18 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+\usepackage{tikz}
+\author{Баширов 778}
+\title{Домашнее задание 7}
+
+\begin{document}
+\maketitle
+\newpage
+\noindent \large\textbf{1}\normalsize\\
+$C*x = AB*x$\\ $(C - AB)*x = 0$\\ Произведение матрицы $(C - AB)$ на столбец $x$ можно представить как $n$ линейных функций от $n$ случайных величин (столбец $x$ можно представить как $n$ случайных величин которые равновероятно принимают значения от $1$ до $N-1$)\\ Тогда применив лемму Шварца-Зиппеля получаем что вероятность того что некоторый элемент столбца $(C - AB)*x$ равен нулю равна $n/N$. Следовательно равенство $(C - AB)*x = 0$ при произвольных матрицах выполняется с вероятностью $p\leq (n/N)^n$\\ 
+1) относится к классу co-RP при условиях что $(n/N)^n \leq 1/2$\\
+2) $p\leq (n/N)^n$\\
+3) $N \geq n/p^{1/n}$\\
+\end{document}
