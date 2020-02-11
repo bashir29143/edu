@@ -1,1 +1,1 @@
-# mipt
+edu
